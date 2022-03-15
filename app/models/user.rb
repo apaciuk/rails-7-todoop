@@ -12,5 +12,5 @@ class User < ApplicationRecord
 
   has_many :notifications, as: :recipient
   has_many :services
-  has_many :tasks
+  has_and_belongs_to_many :tasks
 end
