@@ -20,6 +20,7 @@ class TasksController < ApplicationController
   def edit; end
 
   # POST /tasks or /tasks.json
+    def create
     @task = Task.new.(task_params.merge( { user_id: current_user.id } ))
 
     respond_to do |format|
