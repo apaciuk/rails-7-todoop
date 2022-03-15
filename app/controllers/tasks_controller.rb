@@ -21,8 +21,8 @@ class TasksController < ApplicationController
 
   # POST /tasks or /tasks.json
   def create
-    current_user.id = :user_id
-    @task = Task.new.(task_params.merge( current_user.id ))
+    if user_masquerade?
+    @task = Task.new.(task_params.merge( { user_id: current_user.id } ))
 
     respond_to do |format|
       if @task.save
@@ -34,6 +34,7 @@ class TasksController < ApplicationController
       end
     end
   end
+end
 
   # PATCH/PUT /tasks/1 or /tasks/1.json
   def update
