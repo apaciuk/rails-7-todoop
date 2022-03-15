@@ -3,6 +3,7 @@
 require 'sidekiq/web'
 
 Rails.application.routes.draw do
+  resources :tasks
   namespace :admin do
     resources :users
     resources :services
@@ -17,5 +18,5 @@ Rails.application.routes.draw do
   devise_scope :user do
     get '/users/sign_out' => 'devise/sessions#destroy'
   end
-  root to: 'home#index'
+  root to: 'tasks#index'
 end
