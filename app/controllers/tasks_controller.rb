@@ -20,8 +20,6 @@ class TasksController < ApplicationController
   def edit; end
 
   # POST /tasks or /tasks.json
-  def create
-    if current_user?
     @task = Task.new.(task_params.merge( { user_id: current_user.id } ))
 
     respond_to do |format|
@@ -34,7 +32,6 @@ class TasksController < ApplicationController
       end
     end
   end
-end
 
   # PATCH/PUT /tasks/1 or /tasks/1.json
   def update
