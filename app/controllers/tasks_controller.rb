@@ -21,7 +21,7 @@ class TasksController < ApplicationController
 
   # POST /tasks or /tasks.json
   def create
-    if user_masquerade?
+    if current_user?
     @task = Task.new.(task_params.merge( { user_id: current_user.id } ))
 
     respond_to do |format|
