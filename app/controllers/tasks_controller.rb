@@ -22,7 +22,7 @@ class TasksController < ApplicationController
   # POST /tasks or /tasks.json
   def create
     current_user.id = :user_id
-    @task = Task.new.(task_params.merge({ current_user.id }))
+    @task = Task.new.(task_params.merge( current_user.id ))
 
     respond_to do |format|
       if @task.save
